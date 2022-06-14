@@ -1,0 +1,15 @@
+type Schedule {
+    date: String!
+    participants: [Participants]
+}
+
+type Participants {
+    name: String!
+    branch: String!
+    time: String!
+    password: String!
+}
+
+type Query {
+    getAllSchedule: [Schedule]
+}
