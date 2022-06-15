@@ -10,6 +10,18 @@ type Participants {
     password: String!
 }
 
+input CreateScheduleInput {
+    date: String!
+    name: String!
+    branch: String!
+    time: String!
+    password: String!
+}
+
 type Query {
     getAllSchedule: [Schedule]
+}
+
+type Mutation {
+    addSchedule(schedule: CreateScheduleInput): String
 }

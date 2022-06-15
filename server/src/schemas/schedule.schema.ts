@@ -29,3 +29,21 @@ export class Schedule extends Document {
     },
   ];
 }
+
+@ObjectType()
+export class CreateScheduleInput {
+  @Field()
+  date: string;
+
+  @Field()  
+  name: string;
+
+  @Field()  
+  branch: string;
+
+  @Field()  
+  time: string;
+
+  @Field()  
+  password: string;
+}
