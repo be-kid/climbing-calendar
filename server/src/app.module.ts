@@ -1,15 +1,19 @@
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ScheduleModule } from './models/schedule.module';
+import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
+import { Module } from "@nestjs/common";
+import { GraphQLModule } from "@nestjs/graphql";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { ScheduleModule } from "./models/schedule.module";
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
-      typePaths: ['./**/*.graphql'],
+      typePaths: ["./**/*.graphql"],
       driver: ApolloDriver,
+      cors: {
+        origin: "http://localhost:3001",
+        credentials: true,
+      },
     }),
     ScheduleModule,
   ],
