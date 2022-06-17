@@ -1,3 +1,3 @@
-export default function ScheduleCard() {
+export default function ScheduleCard(pros: any) {
   return <div></div>;
 }
