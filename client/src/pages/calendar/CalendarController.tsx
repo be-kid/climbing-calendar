@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 export default function CalendarController(props: any) {
   const { year, month } = props;
 
+  // 버튼 클릭 핸들러
   const buttonHandler = (event: any) => {
     props.calendarChange(event.currentTarget.id, year, month);
   };

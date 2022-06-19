@@ -5,6 +5,8 @@ import ScheduleCard from "./ScheduleCard";
 export default function Day(props: any) {
   const { date, day, participants } = props;
   const week = ["일", "월", "화", "수", "목", "금", "토"];
+
+  // ScheduleCard -> 이름, 지점, 시간으로 참여 정보를 알려줌
   return (
     <Stack direction="row" spacing={1}>
       <Box sx={{ p: 2, border: "1px solid black" }}>

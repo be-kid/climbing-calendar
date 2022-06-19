@@ -1,5 +1,5 @@
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+
 export default function ScheduleCard(props: any) {
   const { participant } = props;
   const { name, branch, time, password } = participant;
