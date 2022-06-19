@@ -39,7 +39,6 @@ function App() {
     return today.date.slice(0, 4) === year + month;
   });
 
-  console.log(curCalendar);
   const calendarChange = (upOrDown: string, year: string, month: string) => {
     if (upOrDown === "up") {
       if (month === "12") {
@@ -58,7 +57,7 @@ function App() {
     }
   };
   return (
-    <Stack textAlign={"center"}>
+    <Stack justifyContent="center" alignItems="center">
       <Header />
       <CalendarController
         calendarChange={calendarChange}

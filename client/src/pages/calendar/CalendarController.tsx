@@ -7,7 +7,6 @@ export default function CalendarController(props: any) {
   const { year, month } = props;
 
   const buttonHandler = (event: any) => {
-    console.log(event.currentTarget.id);
     props.calendarChange(event.currentTarget.id, year, month);
   };
   return (
