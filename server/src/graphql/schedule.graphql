@@ -1,27 +1,28 @@
 type Schedule {
-    date: String!
-    participants: [Participants]
+  date: String!
+  participants: [Participants]
 }
 
 type Participants {
-    name: String!
-    branch: String!
-    time: String!
-    password: String!
+  name: String!
+  branch: String!
+  time: String!
+  password: String!
+  _id: String!
 }
 
 input CreateScheduleInput {
-    date: String!
-    name: String!
-    branch: String!
-    time: String!
-    password: String!
+  date: String!
+  name: String!
+  branch: String!
+  time: String!
+  password: String!
 }
 
 type Query {
-    getAllSchedule: [Schedule]
+  getAllSchedule: [Schedule]
 }
 
 type Mutation {
-    addSchedule(schedule: CreateScheduleInput): String
+  addSchedule(schedule: CreateScheduleInput): String
 }

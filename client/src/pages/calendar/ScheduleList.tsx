@@ -22,7 +22,14 @@ export default function ScheduleList(props: any) {
       {thisMonth.map((day: any, idx: number) => {
         const today = (new Date(year, month + 1, idx + 1).getDay() + 1) % 7;
         return (
-          <Day key={idx} date={idx + 1} day={today} participants={day}></Day>
+          <Day
+            key={idx}
+            year={year}
+            month={month}
+            date={idx + 1}
+            day={today}
+            participants={day}
+          ></Day>
         );
       })}
     </Stack>
