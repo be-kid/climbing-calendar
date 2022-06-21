@@ -15,7 +15,6 @@ const ALL_SCHEDULE = gql`
         name
         branch
         time
-        password
         _id
       }
     }

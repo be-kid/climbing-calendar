@@ -1,6 +1,6 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import * as mongoose from 'mongoose';
-import { Document } from 'mongoose';
+import { Field, ObjectType } from "@nestjs/graphql";
+import * as mongoose from "mongoose";
+import { Document } from "mongoose";
 
 export const ScheduleSchema = new mongoose.Schema({
   date: String,
@@ -26,7 +26,7 @@ export class Schedule extends Document {
       branch: string;
       time: string;
       password: string;
-    },
+    }
   ];
 }
 
@@ -35,15 +35,15 @@ export class CreateScheduleInput {
   @Field()
   date: string;
 
-  @Field()  
+  @Field()
   name: string;
 
-  @Field()  
+  @Field()
   branch: string;
 
-  @Field()  
+  @Field()
   time: string;
 
-  @Field()  
+  @Field()
   password: string;
 }

@@ -3,9 +3,29 @@ import Box from "@mui/material/Box";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Backdrop from "@mui/material/Backdrop";
 import ScheduleCard from "./ScheduleCard";
-import { gql } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
 import ScheduleRegister from "./ScheduleRegister";
+
+const ADD_SCHEDULE = gql`
+  mutation ($schedule: {
+        date: String!
+        name: String!
+        branch: String!
+        time: String!
+        password: String!
+      }){
+    addSchedule(
+      schedule: {
+        date: $date
+        name: $name
+        branch: $branch
+        time: $time
+        password: $password
+      }
+    )
+  }
+`;
 
 export default function Day(props: any) {
   const { year, month, date, day, participants } = props;
@@ -15,9 +35,10 @@ export default function Day(props: any) {
 
   const [name, setName] = useState("");
   const [branch, setBranch] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
+  const [time, setTime] = useState("");
   const [password, setPassword] = useState("");
+
+  const [addSchedule, { data }] = useMutation(ADD_SCHEDULE);
 
   const [open, setOpen] = useState(false);
   const handleClose = () => {
@@ -27,15 +48,6 @@ export default function Day(props: any) {
     setOpen(!open);
   };
 
-  // const ADD_SCHEDULE = gql`
-  //    {
-  //     addSchedule(schedule: {
-  //       date: ${req_date},
-  //       name: ${}
-  //     })
-  //   }
-  // `
-
   const handleName = (event: any) => {
     setName(event.currentTarget.value);
   };
@@ -43,16 +55,33 @@ export default function Day(props: any) {
     setBranch(branchName);
   };
 
-  const handleStartTime = (event: any) => {
-    setStartTime(event.currentTarget.value);
-  };
-
-  const handleEndTime = (event: any) => {
-    setEndTime(event.currentTarget.value);
+  const handleTime = (time: string) => {
+    setTime(time);
   };
 
   const handlePassword = (event: any) => {
     setPassword(event.currentTarget.value);
+  };
+
+  const handleSubmit = () => {
+    console.log(
+      `fullDate:${fullDate}, name:${name}, branch:${branch}, time:${time}, password:${password}`
+    );
+    const date = fullDate;
+    addSchedule({
+      variables: {
+        date,
+        name,
+        branch,
+        time,
+        password,
+      },
+    });
+    // setName("");
+    // setBranch("");
+    // setStartTime("");
+    // setPassword("");
+    setOpen(false);
   };
 
   // ScheduleCard -> 이름, 지점, 시간으로 참여 정보를 알려줌
@@ -78,9 +107,9 @@ export default function Day(props: any) {
           <ScheduleRegister
             handleName={handleName}
             handleBranch={handleBranch}
-            handleStartTime={handleStartTime}
-            handleEndTime={handleEndTime}
+            handleStartTime={handleTime}
             handlePassword={handlePassword}
+            handleSubmit={handleSubmit}
             handleClose={handleClose}
           />
         </Backdrop>
