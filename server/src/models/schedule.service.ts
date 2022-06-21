@@ -17,7 +17,7 @@ export class ScheduleService {
       name: schedule.name,
       branch: schedule.branch,
       time: schedule.time,
-      password: schedule.time,
+      password: schedule.password,
     };
     const oldSchedule = await this.scheduleModel.findOne({
       date: schedule.date,

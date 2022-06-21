@@ -8,22 +8,8 @@ import { useState } from "react";
 import ScheduleRegister from "./ScheduleRegister";
 
 const ADD_SCHEDULE = gql`
-  mutation ($schedule: {
-        date: String!
-        name: String!
-        branch: String!
-        time: String!
-        password: String!
-      }){
-    addSchedule(
-      schedule: {
-        date: $date
-        name: $name
-        branch: $branch
-        time: $time
-        password: $password
-      }
-    )
+  mutation addSchedule($schedule: CreateScheduleInput) {
+    addSchedule(schedule: $schedule)
   }
 `;
 
@@ -70,11 +56,13 @@ export default function Day(props: any) {
     const date = fullDate;
     addSchedule({
       variables: {
-        date,
-        name,
-        branch,
-        time,
-        password,
+        schedule: {
+          date,
+          name,
+          branch,
+          time,
+          password,
+        },
       },
     });
     // setName("");
@@ -82,6 +70,7 @@ export default function Day(props: any) {
     // setStartTime("");
     // setPassword("");
     setOpen(false);
+    window.location.replace("/");
   };
 
   // ScheduleCard -> 이름, 지점, 시간으로 참여 정보를 알려줌

@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <Box>
       <Stack textAlign={"center"} sx={{ border: "1px dashed grey" }}>
-        나는 한다 클라이밍
+        클린더
       </Stack>
     </Box>
   );
