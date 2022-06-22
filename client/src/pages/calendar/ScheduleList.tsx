@@ -18,7 +18,7 @@ export default function ScheduleList(props: any) {
 
   // Day 컴포넌트에 날짜, 요일, 참여자 정보를 전달
   return (
-    <Stack sx={{ width: 400, textAlign: "center" }}>
+    <Stack sx={{ width: "60%", textAlign: "center" }}>
       {thisMonth.map((day: any, idx: number) => {
         const today = (new Date(year, month + 1, idx + 1).getDay() + 1) % 7;
         return (

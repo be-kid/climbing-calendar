@@ -50,9 +50,6 @@ export default function Day(props: any) {
   };
 
   const handleSubmit = () => {
-    console.log(
-      `fullDate:${fullDate}, name:${name}, branch:${branch}, time:${time}, password:${password}`
-    );
     const date = fullDate;
     addSchedule({
       variables: {
@@ -75,34 +72,41 @@ export default function Day(props: any) {
 
   // ScheduleCard -> 이름, 지점, 시간으로 참여 정보를 알려줌
   return (
-    <Stack direction="row" spacing={1}>
-      <Box sx={{ p: 2, border: "1px solid black" }}>
+    <Stack direction="row" spacing={1} height="70px">
+      <Box sx={{ p: 1, border: "1px solid black" }}>
         <div>{`${date}일`}</div>
         <div>{`${week[day]}요일`}</div>
       </Box>
-      {participants.map((participant: any, idx: number) => {
-        return (
-          <ScheduleCard key={idx} participant={participant}></ScheduleCard>
-        );
-      })}
-      <Box sx={{ p: 2 }}>
-        <AddCircleIcon color="primary" onClick={handleToggle}>
-          add_circle
-        </AddCircleIcon>
-        <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={open}
-        >
-          <ScheduleRegister
-            handleName={handleName}
-            handleBranch={handleBranch}
-            handleStartTime={handleTime}
-            handlePassword={handlePassword}
-            handleSubmit={handleSubmit}
-            handleClose={handleClose}
-          />
-        </Backdrop>
-      </Box>
+      <Stack direction="row" overflow="scroll">
+        {participants.map((participant: any, idx: number) => {
+          return (
+            <ScheduleCard
+              key={idx}
+              date={fullDate}
+              participant={participant}
+            ></ScheduleCard>
+          );
+        })}
+
+        <Box sx={{ p: 2 }}>
+          <AddCircleIcon color="primary" onClick={handleToggle}>
+            add_circle
+          </AddCircleIcon>
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={open}
+          >
+            <ScheduleRegister
+              handleName={handleName}
+              handleBranch={handleBranch}
+              handleStartTime={handleTime}
+              handlePassword={handlePassword}
+              handleSubmit={handleSubmit}
+              handleClose={handleClose}
+            />
+          </Backdrop>
+        </Box>
+      </Stack>
     </Stack>
   );
 }

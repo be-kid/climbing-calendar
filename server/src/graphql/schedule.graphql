@@ -19,10 +19,17 @@ input CreateScheduleInput {
   password: String!
 }
 
+input DeleteScheduleInput {
+  _id: String!
+  date: String!
+  password: String!
+}
+
 type Query {
   getAllSchedule: [Schedule]
 }
 
 type Mutation {
   addSchedule(schedule: CreateScheduleInput): String
+  deleteSchedule(schedule: DeleteScheduleInput): String
 }

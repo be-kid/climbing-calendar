@@ -1,6 +1,10 @@
 import { Model } from "mongoose";
 import { Injectable, Inject } from "@nestjs/common";
-import { Schedule, CreateScheduleInput } from "../schemas/schedule.schema";
+import {
+  Schedule,
+  CreateScheduleInput,
+  DeleteScheduleInput,
+} from "../schemas/schedule.schema";
 @Injectable()
 export class ScheduleService {
   constructor(
@@ -34,5 +38,31 @@ export class ScheduleService {
       });
     }
     return "Success";
+  }
+
+  async deleteSchedule(schedule: DeleteScheduleInput): Promise<string> {
+    const { _id, date, password } = schedule;
+
+    console.log(schedule);
+    const { participants } = await this.scheduleModel.findOne({ date });
+
+    for (let i = 0; i < participants.length; i++) {
+      console.log(participants[i]._id.toString(), _id);
+      if (participants[i]._id.toString() === _id) {
+        if (participants[i].password === password) {
+          await this.scheduleModel.findOneAndUpdate(
+            { date },
+            {
+              participants: participants.filter((part) => {
+                return part._id.toString() !== _id;
+              }),
+            }
+          );
+          return "Success";
+        }
+      }
+    }
+
+    return "Failed";
   }
 }

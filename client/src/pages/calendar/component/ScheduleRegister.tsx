@@ -7,36 +7,36 @@ import { ChangeEvent, useState } from "react";
 export default function ScheduleRegister(props: any) {
   const branches = [
     {
-      value: "snu",
-      label: "snu",
+      value: "설입",
+      label: "설입",
     },
     {
-      value: "sillim",
-      label: "sillim",
+      value: "신림",
+      label: "신림",
     },
     {
-      value: "yeonnam",
-      label: "yeonnam",
+      value: "연남",
+      label: "연남",
     },
     {
-      value: "hongdae",
-      label: "hongdae",
+      value: "홍대",
+      label: "홍대",
     },
     {
-      value: "yangjae",
-      label: "yangjae",
+      value: "양재",
+      label: "양재",
     },
     {
-      value: "ilsan",
-      label: "ilsan",
+      value: "일산",
+      label: "일산",
     },
     {
-      value: "magok",
-      label: "magok",
+      value: "마곡",
+      label: "마곡",
     },
     {
-      value: "etc",
-      label: "etc",
+      value: "기타",
+      label: "기타",
     },
   ];
 
@@ -126,8 +126,8 @@ export default function ScheduleRegister(props: any) {
           label="Password"
           type="password"
           autoComplete="current-password"
-          sx={{ minLength: 4, maxLength: 4 }}
-          helperText="스케쥴 삭제에 쓰이는 비번입니다"
+          helperText="스케쥴 삭제에 쓰이는 비번입니다.
+          실제로 쓰는 비번을 넣지마세요;"
           onChange={props.handlePassword}
         />
       </div>

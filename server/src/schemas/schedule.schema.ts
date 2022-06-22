@@ -26,6 +26,7 @@ export class Schedule extends Document {
       branch: string;
       time: string;
       password: string;
+      _id: string;
     }
   ];
 }
@@ -43,6 +44,18 @@ export class CreateScheduleInput {
 
   @Field()
   time: string;
+
+  @Field()
+  password: string;
+}
+
+@ObjectType()
+export class DeleteScheduleInput {
+  @Field()
+  _id: string;
+
+  @Field()
+  date: string;
 
   @Field()
   password: string;

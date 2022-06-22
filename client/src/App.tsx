@@ -43,7 +43,7 @@ function App() {
     return today.date.slice(0, 4) === year + month;
   });
 
-  console.log(curCalendar);
+  // console.log(curCalendar);
   // <, > 버튼을 눌렀을 때 월을 +, - 해주는 함수
   const calendarChange = (upOrDown: string, year: string, month: string) => {
     if (upOrDown === "up") {
