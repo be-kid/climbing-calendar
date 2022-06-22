@@ -42,8 +42,6 @@ export class ScheduleService {
 
   async deleteSchedule(schedule: DeleteScheduleInput): Promise<string> {
     const { _id, date, password } = schedule;
-
-    console.log(schedule);
     const { participants } = await this.scheduleModel.findOne({ date });
 
     for (let i = 0; i < participants.length; i++) {

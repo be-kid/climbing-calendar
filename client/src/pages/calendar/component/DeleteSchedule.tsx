@@ -20,7 +20,6 @@ export default function DeleteSchedule(props: any) {
     setPassword(event.currentTarget.value);
   };
   const handleDeleteButton = () => {
-    console.log(_id, date, password);
     deleteSchedule({
       variables: {
         schedule: {
