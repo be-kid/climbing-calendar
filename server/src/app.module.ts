@@ -11,7 +11,7 @@ import { ScheduleModule } from "./models/schedule.module";
       typePaths: ["./**/*.graphql"],
       driver: ApolloDriver,
       cors: {
-        origin: "http://localhost:3000",
+        origin: "*",
         credentials: true,
       },
     }),
