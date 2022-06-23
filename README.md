@@ -40,6 +40,8 @@ password : string,
 ]
 }
 
+# https://clindar.netlify.app/
+
 ### Nest.JS 서버 배포하기
 
 Heroku
@@ -72,3 +74,19 @@ NODE_ENV : production
 추가로 DB key 같은 것도 추가
 
 이후에 배포
+
+### React Typescript 배포하기
+
+배포 전에 npm run build 로 build 폴더 생성
+
+Netlitfy
+`npm i netlify-cli -g`
+`netlify login`
+`netlify deploy`
+
+권한 문제가 있을 땐 sudo 붙이기
+
+> Create & configure a new site
+> 선택 후 팀명, 사이트 이름 설정
+
+Publish directory에 ./build 입력
