@@ -19,8 +19,8 @@ export default function DeleteSchedule(props: any) {
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.currentTarget.value);
   };
-  const handleDeleteButton = () => {
-    deleteSchedule({
+  const handleDeleteButton = async () => {
+    await deleteSchedule({
       variables: {
         schedule: {
           _id,

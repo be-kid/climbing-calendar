@@ -45,7 +45,7 @@ export class ScheduleService {
     const { participants } = await this.scheduleModel.findOne({ date });
 
     for (let i = 0; i < participants.length; i++) {
-      console.log(participants[i]._id.toString(), _id);
+      // console.log(participants[i]._id.toString(), _id);
       if (participants[i]._id.toString() === _id) {
         if (participants[i].password === password) {
           await this.scheduleModel.findOneAndUpdate(

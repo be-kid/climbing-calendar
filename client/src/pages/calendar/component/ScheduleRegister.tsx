@@ -135,8 +135,8 @@ export default function ScheduleRegister(props: any) {
         <Button
           variant="contained"
           component="span"
-          onClick={() => {
-            props.handleSubmit();
+          onClick={async () => {
+            await props.handleSubmit();
           }}
           sx={{ margin: "5px" }}
         >

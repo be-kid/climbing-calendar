@@ -49,9 +49,9 @@ export default function Day(props: any) {
     setPassword(event.currentTarget.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const date = fullDate;
-    addSchedule({
+    await addSchedule({
       variables: {
         schedule: {
           date,
